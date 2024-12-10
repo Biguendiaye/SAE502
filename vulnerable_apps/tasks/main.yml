@@ -1,1 +1,25 @@
-bbb
+---
+- name: Déployer DVWA
+  community.docker.docker_container:
+     name: dvwa
+     hostname: vuln-dvwa
+     image: vulnerables/web-dvwa
+     state: started
+     networks:
+        - name: cyber
+          ipv4_address: "192.168.119.100"
+     published_ports:
+        - "8080:80"
+
+- name: Déployer Juice Shop
+  community.docker.docker_container:
+     name: juice-shop
+     hostname: vuln-juice-shop
+     image: bkimminich/juice-shop
+     state: started
+     networks:
+        - name: cyber
+          ipv4_address: "192.168.119.101"
+     published_ports:
+        - "3000:3000"
+     state: started
