@@ -1,7 +1,7 @@
 ---
 
 # ici on déploie les outils vulnérables DVWA et Juice-shop avec les images respectives  vulnerables/web-dvwa et bkimminich/juice-shop
-sur le réseau cyber en leur accordant des adresses ip manuellement sur le réseau 
+#sur le réseau cyber en leur accordant des adresses ip manuellement sur le réseau 
 - name: Déployer DVWA
   community.docker.docker_container:
      name: dvwa
