@@ -1,1 +1,9 @@
+---
+- name: Créer le réseau Docker "cyber"
+  community.docker.docker_network:
+	name: cyber
+	driver: bridge
+	ipam_config:
+  	- subnet: 192.168.119.0/24
 
+# ce playbook permet de créer le réseau 192.168.119.0/24 du nom de cyber par bridge 
