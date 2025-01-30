@@ -1,0 +1,26 @@
+# sur ce playbook , on déploie les outils offensives sur le réseau cyber 
+
+---
+- name: Déployer Nmap et Metasploit
+  hosts: localhost
+  tasks:
+  	- name: Déployer le conteneur Nmap
+    	community.docker.docker_container:
+        	name: nmap
+        	image: instrumentisto/nmap
+        	state: started
+        	networks:
+          	- name: cyber
+            	ipv4_address: "192.168.119.102"
+        	command: "/bin/sh -c 'tail -f /dev/null'" # Maintenir le conteneur actif
+
+  	- name: Déployer le conteneur Metasploit
+    	community.docker.docker_container:
+         	name: metasploit
+         	image: metasploitframework/metasploit-framework
+         	state: started
+         	networks:
+            	- name: cyber
+              	ipv4_address: "192.168.119.103"
+         	command: "/bin/sh -c 'tail -f /dev/null'" # Maintenir le conteneur actif
+
